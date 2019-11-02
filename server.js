@@ -3,7 +3,7 @@ var express = require("express");
 var path = require("path");
 var logger = require("morgan");
 var exphbs = require("express-handlebars");
-
+var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -39,6 +39,14 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+//Connect to mongo using mongoose
+mongoose.connect("mongodb://localhost/scrapingNews");
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", () => {
+  console.log("Connected to MOngoose");
 });
 
 module.exports = app;
