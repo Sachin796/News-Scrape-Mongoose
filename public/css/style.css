@@ -1,8 +1,10 @@
-body {
-  padding: 50px;
-  font: 15px arial, sans-serif;
+.card-angled {
+    transform: rotate(-45deg);
+    /* needs Y at 0 deg to behave properly*/
+    width: 100%;
 }
 
-a {
-  color: #00b7ff;
-}
+.news-image{
+    max-width: 100px;
+    max-height: 100px;
+  }
